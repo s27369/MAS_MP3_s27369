@@ -10,4 +10,10 @@ public class PojazdLadowy extends TerenPojazdu{
         this.maksPredkosc = maksPredkosc;
     }
 
+    @Override
+    public String toString() {
+        return "Ladowy{" +
+                "maksPredkosc=" + maksPredkosc +
+                '}';
+    }
 }

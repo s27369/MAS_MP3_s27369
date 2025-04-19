@@ -34,4 +34,12 @@ public class PojazdTransportowy extends Pojazd {
     public int getObecnyUdzwig() {
         return obecnyUdzwig;
     }
+
+    @Override
+    public String toString() {
+        return super.toString()+
+                ", typ=Transportowy, maxUdzwig=" + maxUdzwig +
+                ", obecnyUdzwig=" + obecnyUdzwig +
+                '}';
+    }
 }

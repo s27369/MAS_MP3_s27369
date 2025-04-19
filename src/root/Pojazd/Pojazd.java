@@ -26,4 +26,9 @@ public abstract class Pojazd extends ObjectPlus {
         }
         this.terenPojazdu = terenPojazdu;
     }
+
+    @Override
+    public String toString() {
+        return "Pojazd["+rejestracja+"]{terenPojazdu=" + terenPojazdu;
+    }
 }

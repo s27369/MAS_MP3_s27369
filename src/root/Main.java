@@ -24,6 +24,13 @@ public class Main {
         ((PojazdBojowy)heliBojowy).ognia(6);
         ((PojazdBojowy)heliBojowy).ognia(1);
 
-//        ciezarowka.
+        ((PojazdTransportowy)ciezarowka).zaladuj(50);
+        ((PojazdTransportowy)ciezarowka).zaladuj(60);
+        ((PojazdTransportowy)ciezarowka).rozladuj();
+        ((PojazdTransportowy)heliTransportowy).zaladuj(50);
+        ((PojazdTransportowy)heliTransportowy).zaladuj(60);
+        ((PojazdTransportowy)heliTransportowy).rozladuj();
+
+        Pojazd.printExtent();
     }
 }

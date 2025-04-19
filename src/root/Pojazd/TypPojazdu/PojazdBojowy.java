@@ -49,4 +49,11 @@ public class PojazdBojowy extends Pojazd {
         }
         this.iloscAmunicji = iloscAmunicji;
     }
+
+    @Override
+    public String toString() {
+        return super.toString()+
+                ", typ=Bojowy, iloscAmunicji=" + iloscAmunicji +
+                '}';
+    }
 }

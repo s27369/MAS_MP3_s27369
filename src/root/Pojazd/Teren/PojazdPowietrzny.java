@@ -13,4 +13,12 @@ public class PojazdPowietrzny extends TerenPojazdu{
         }
         this.maksWysokoscLotu = maksWysokoscLotu;
     }
+
+    @Override
+    public String toString() {
+        return "Powietrzny{" +
+                "zasiegLotu=" + zasiegLotu +
+                ", maksWysokoscLotu=" + maksWysokoscLotu +
+                '}';
+    }
 }
