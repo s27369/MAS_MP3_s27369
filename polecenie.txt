@@ -1,0 +1,69 @@
+-klasa abstrakcyjna i polimorficzne wołanie metod
+    -
+-Overlapping(pomysl: )
+(Obiekt może posiadać wiele ról jednocześnie spośród podtypów wymienionych w dziedziczeniu)
+(W trakcie konstrukcji obiektu możliwe jest ustalenie dowolnej kombinacji ról określonych w dziedziczeniu. Można to zrealizować
+ za pomocą uniwersalnego konstruktora, lub statycznej metody tworzącej obiekt)
+(Przydzielenie zestawu ról jest statyczne - nie jest możliwe dodanie / usunięcie / zmiana roli po utworzeniu obiektu)
+Dwa sposoby:
+    -> spłaszczenie hiererchii klas
+        ->Wszystkie składowe (atrybuty, metody, asocjacje) zostaną przeniesione do klasy
+          bazowej
+        ->Należy umożliwić stworzenie obiektu klasy bazowej - nie może być ona abstrakcyjna.
+        ->Należy wprowadzić dyskryminator w celu wskazania ról danego obiektu (np. zbiór
+          wartości enum).
+        ->Możliwe jest użycie tylko tych składowych obiektu, które są właściwe dla
+          przydzielonego zestawu ról. Próba użycia niewłaściwej składowej powinna spowodować
+          wyrzucenie wyjątku.
+        ->Konstrukcja obiektu powinna uwzględnić walidację składowych dla danego zestawu
+          ról.
+        ->Warto wprowadzić interfejsy dla każdej roli zawierające metody obsługujące składowe
+          danej roli. Klasa bazowa będzie wtedy implementować wszystkie te interfejsy. Zwiększy to
+          czytelność kodu przez łatwiejszą identyfikację przynależności składowych do poszczególnych
+          ról.
+    ->zastąpienie dziedziczenia kompozycją
+        ->Dla każdej roli należy stworzyć osobną klasę zawierającą składowe charakterystyczne dla danej roli
+        -> Klasy te nie powinny dziedziczyć po klasie bazowej, gdyż spowoduje to powielenie składowych klasy bazowej
+        ->Obiekt klasy bazowej będzie skomponowany z obiektów określających jego role.
+        ->Należy umożliwić stworzenie obiektu klasy bazowej - nie może być ona abstrakcyjna.
+        ->Po inicjalizacji obiektu głównego nie jest możliwe dodanie / usunięcie obiektu reprezentującego rolę.
+        ->W przypadku posiadania referencji do obiektu głównego należy umożliwić korzystanie
+                    ze składowych umieszczonych w podtypach. Można to zrealizować za pomocą delegacji metod
+                    (z zastosowaniem odpowiednich interfejsów), lub metod umożliwiających pobranie obiektów
+                    ról.
+
+-Wielodziedziczenie(pomysl: )
+(Należy zastąpić jedną z gałęzi dziedziczenia implementacją interfejsów)
+(Należy pamiętać, że zarówno klasa Student jak i WorkingStudent z przykładu powinny
+ implementować interfejs IStudent. W przeciwnym razie wymienione klasy nie będą miały części wspólnej,
+ co jest w sprzeczności z zasadą dziedziczenia)
+
+-Wieloaspektowe (pomysl:)
+(Standardowo obiekt posiada dokładnie jedną rolę z każdej hierarchii dziedziczenia
+ związanej z tą konstrukcją)
+(Rola ta nie może być zmieniona w trakcie życia obiektu.)
+(Jedna gałąź dziedziczenia może być zaimplementowana jako “zwykłe” dziedziczenie, druga jako kompozycja lub
+spłaszczenie hierarchii w klasie bazowej)
+
+-Dynamiczne (pomysl: zolnierz - stopien)
+(Obiekt może posiadać jedną rolę spośród podtypów wymienionych w dziedziczeniu.)
+(Rola obiektu może być zmieniona na inną w trakcie jego istnienia.)
+trzy główne sposoby:
+    ->Implementacja za pomocą “zwykłego” dziedziczenia i konstruktora kopiującego:
+        ->Klasy reprezentujące podtypy posiadają konstruktor, którego jednym z argumentów jest referencja do obiektu
+        klasy bazowej. Reprezentuje on “starą” rolę obiektu.
+        ->Inicjalizacja powinna obejmować przepisanie wartości charakterystycznych dla klasy bazowej do nowego obiektu.
+        Dotyczy to atrybutów i asocjacji klasy bazowej.
+        ->W momencie zmiany roli “stary” obiekt przestaje istnieć. Należy zatem po nim “posprzątać” - usunąć go z
+        ekstensji klasy i rozłączyć jego asocjacje.
+        ->Miminalna implementacja za pomocą tego sposobu powinna uwzględnić usunięcie “starego” obiektu z ekstensji klasy
+    ->Implementacja za pomocą spłaszczenia hierarchii klas.
+        ->Implementacja podobna do realizacji dziedziczenia overlapping za pomocą spłaszczenia hierarchii klas.
+        Dyskryminatorem jest pojedyncza wartość Enum.
+        ->Należy zapewnić metody do zmiany roli obiektu.
+        ->Podczas zmiany roli obiektu należy poprawnie zainicjalizować atrybuty i asocjacje wymagane w nowej roli.
+        “Stare” atrybuty i asocjacje nie pasujące do nowej roli powinny zostać usunięte
+    -> Implementacja za pomocą kompozycji.
+        ->Implementacja podobna do realizacji dziedziczenia overlapping za pomocą kompozycji.
+        ->W danym momencie tylko jeden obiekt “części” reprezentujący rolę obiektu może mieć przypisaną wartość.
+        ->Należy zapewnić metody do zmiany roli obiektu.
