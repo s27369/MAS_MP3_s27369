@@ -10,11 +10,10 @@ public class PojazdBojowy extends Pojazd {
     public PojazdBojowy(String rejestracja, TerenPojazdu terenPojazdu, int iloscAmunicji) {
         super(rejestracja, terenPojazdu);
         try{
-
+            setIloscAmunicji(iloscAmunicji);
         }catch (Exception e){
             removeFromExtent();
         }
-        setIloscAmunicji(iloscAmunicji);
     }
 
     public void zaladujAmunicje(int ilosc){

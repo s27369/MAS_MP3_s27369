@@ -10,13 +10,16 @@ public class PojazdTransportowy extends Pojazd {
     public PojazdTransportowy(String rejestracja, TerenPojazdu terenPojazdu, int maxUdzwig) {
         super(rejestracja, terenPojazdu);
         try{
-            if(maxUdzwig<1)throw new IllegalArgumentException("udzwig musi być >=1");
-            this.maxUdzwig=maxUdzwig;
+            setMaxUdzwig(maxUdzwig);
         }catch (Exception e){
             removeFromExtent();
         }
     }
 
+    private void setMaxUdzwig(int maxUdzwig){
+        if(maxUdzwig<1) throw new IllegalArgumentException("udzwig musi być >=1");
+        this.maxUdzwig=maxUdzwig;
+    }
     public void zaladuj(int waga){
         if(waga<1){
             throw new IllegalArgumentException("waga musi byc wieksza od 0");

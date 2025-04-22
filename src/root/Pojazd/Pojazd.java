@@ -33,6 +33,13 @@ public abstract class Pojazd extends ObjectPlus {
     }
 
     @Override
+    public void removeFromExtent() {
+        this.terenPojazdu.removeFromExtent();
+        this.terenPojazdu=null;
+        super.removeFromExtent();
+    }
+
+    @Override
     public String toString() {
         return "Pojazd["+rejestracja+"]{terenPojazdu=" + terenPojazdu;
     }

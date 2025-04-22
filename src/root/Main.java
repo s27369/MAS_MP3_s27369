@@ -32,5 +32,9 @@ public class Main {
         ((PojazdTransportowy)heliTransportowy).rozladuj();
 
         Pojazd.printExtent();
+
+        ((PojazdTransportowy) ciezarowka).removeFromExtent();
+
+        Pojazd.printExtent();
     }
 }
