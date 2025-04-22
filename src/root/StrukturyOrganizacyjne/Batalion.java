@@ -1,7 +1,7 @@
 package root.StrukturyOrganizacyjne;
 
 import root.Adres;
-import root.Osoby.Korpus.Zolnierz;
+import root.Osoby.Zolnierz;
 import root.ToStringType;
 
 public class Batalion extends StrukturaOrganizacyjna {

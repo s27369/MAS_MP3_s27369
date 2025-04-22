@@ -1,7 +1,7 @@
 package root.StrukturyOrganizacyjne;
 
 import root.ObjectPlus;
-import root.Osoby.Korpus.Zolnierz;
+import root.Osoby.Zolnierz;
 import root.ToStringType;
 
 public abstract class StrukturaOrganizacyjna extends ObjectPlus {

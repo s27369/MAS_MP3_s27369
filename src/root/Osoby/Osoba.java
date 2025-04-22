@@ -3,7 +3,7 @@ package root.Osoby;
 import root.ObjectPlus;
 import root.ToStringType;
 
-public class Osoba extends ObjectPlus {
+public abstract class Osoba extends ObjectPlus {
     private String imie, nazwisko;
     public ToStringType toStringType = ToStringType.DETAILED;
 
@@ -16,6 +16,7 @@ public class Osoba extends ObjectPlus {
             removeFromExtent();
         }
     }
+    public abstract int getZarobki(int liczbaDni);
 
     public String getImie() {
         return imie;

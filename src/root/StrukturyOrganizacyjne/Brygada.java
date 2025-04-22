@@ -1,6 +1,6 @@
 package root.StrukturyOrganizacyjne;
 
-import root.Osoby.Korpus.Zolnierz;
+import root.Osoby.Zolnierz;
 import root.ToStringType;
 
 import java.util.ArrayList;

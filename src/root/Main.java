@@ -1,6 +1,6 @@
 package root;
 
-import root.Osoby.Korpus.Zolnierz;
+import root.Osoby.Zolnierz;
 import root.Pojazd.Pojazd;
 import root.Pojazd.Teren.PojazdLadowy;
 import root.Pojazd.Teren.PojazdPowietrzny;
@@ -36,6 +36,8 @@ public class Main {
         z1.setPrzelozony(z2);
 //        z1.addPowdladny(z3);
 
+        ObjectPlus.printExtent();
+        z2.removeFromExtent();
         ObjectPlus.printExtent();
     }
     private static void wieloaspektowe(){
