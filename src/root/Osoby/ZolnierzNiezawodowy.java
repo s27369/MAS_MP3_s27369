@@ -4,8 +4,8 @@ public class ZolnierzNiezawodowy extends Zolnierz implements IPracownik{
     private int liczbaPrzepracowanychDni;
     private Pracownik pracownik;
 
-    public ZolnierzNiezawodowy(String imie, String nazwisko, String stopien, Pracownik pracownik) {
-        super(imie, nazwisko, stopien);
+    public ZolnierzNiezawodowy(Pracownik pracownik, String stopien) {
+        super(pracownik.getImie(), pracownik.getNazwisko(), stopien);
         try{
             setPracownik(pracownik);
         }catch (Exception e){

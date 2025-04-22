@@ -1,6 +1,9 @@
 package root;
 
+import root.Osoby.Osoba;
+import root.Osoby.Pracownik;
 import root.Osoby.Zolnierz;
+import root.Osoby.ZolnierzNiezawodowy;
 import root.Pojazd.Pojazd;
 import root.Pojazd.Teren.PojazdLadowy;
 import root.Pojazd.Teren.PojazdPowietrzny;
@@ -8,10 +11,41 @@ import root.Pojazd.TypPojazdu.PojazdBojowy;
 import root.Pojazd.TypPojazdu.PojazdTransportowy;
 import root.StrukturyOrganizacyjne.Batalion;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
 //        wieloaspektowe();
-        dynamic();
+//        dynamic();
+//        klasaAbstrakcyjna();
+        wielodziedziczenie();
+    }
+    private static void klasaAbstrakcyjna(){
+        System.out.println("------------------------------------------KLASA ABSTRAKCYJNA------------------------------------------");
+        Osoba z1 = new Zolnierz("Jan", "Kowalski", "Szeregowy");
+        Osoba p1 = new Pracownik("Karol", "Nowak", "Konsultant", 200, 40, 100);
+
+        List<Osoba> osoby = new ArrayList<>();
+        osoby.add(z1);
+        osoby.add(p1);
+
+        for(Osoba o: osoby) System.out.println(o.getSimpleName()+", zarobki=" + o.getZarobki(30));
+    }
+    private static void wielodziedziczenie(){
+        System.out.println("------------------------------------------WIELODZIEDZICZENIE------------------------------------------");
+        Zolnierz z1 = new Zolnierz("Jan", "Kowalski", "Szeregowy");
+        Pracownik p1 = new Pracownik("Karol", "Nowak", "Konsultant", 200, 40, 100);
+        ZolnierzNiezawodowy zn = new ZolnierzNiezawodowy(p1, "Szeregowy");
+        System.out.println(z1.getSimpleName()+", zarobki="+z1.getZarobki(30));
+
+        //20 dni przepracowane w firmie i 10 w wojsku
+        zn.setLiczbaPrzepracowanychDni(20);
+        System.out.println(zn.getSimpleName()+", zarobki="+zn.getZarobki(10));
+
+        //10 dni przepracowane w firmie i 10 w wojsku
+        zn.setLiczbaPrzepracowanychDni(10);
+        System.out.println(zn.getSimpleName()+", zarobki="+zn.getZarobki(10));
     }
     private static void dynamic(){
         System.out.println("------------------------------------------DYNAMIC------------------------------------------");
