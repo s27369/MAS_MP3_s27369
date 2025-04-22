@@ -75,7 +75,7 @@ public class Zolnierz extends Osoba {
 
     Batalion dowodzonyBatalion = null;
 
-    public void addBatalion(Batalion b){
+    public void setBatalion(Batalion b){
         if(this.korpus!=Korpus.OFICER) throw new IllegalStateException("Tylko oficer może dowodzić batalionem");
         if(b==null) throw new IllegalArgumentException("Batalion nie moze byc null");
         if(this.dowodzonyBatalion!=null){
@@ -89,5 +89,30 @@ public class Zolnierz extends Osoba {
     }
 
 //-------------------------------------------------AWANS-----------------------------------------------------------------
+    public void awansuj(){
+        if(this.korpus==Korpus.SZEREGOWY){
+            this.korpus=Korpus.PODOFICER;
+            this.podwladni=new ArrayList<>();
+        } else if (this.korpus==Korpus.PODOFICER) {
+            this.korpus=Korpus.OFICER;
+        }else{
+            throw new IllegalStateException("Oficer to najwyższy korpus, nie można dalej awansować");
+        }
+    }
 
+    public void degraduj(){
+        if(this.korpus==Korpus.OFICER){
+            this.korpus=Korpus.PODOFICER;
+            this.dowodzonyBatalion.removeDowodca();
+            this.dowodzonyBatalion=null;
+        } else if (this.korpus==Korpus.PODOFICER) {
+            this.korpus=Korpus.SZEREGOWY;
+            for(Zolnierz z: podwladni){
+                z.removePrzelozony();
+            }
+            this.podwladni=null;
+        }else{
+            throw new IllegalStateException("Szeregowy to najwyższy korpus, nie można dalej degradować");
+        }
+    }
 }
