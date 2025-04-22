@@ -7,12 +7,11 @@ import root.ToStringType;
 public abstract class StrukturaOrganizacyjna extends ObjectPlus {
     Zolnierz dowodca;
     int numer;
-    public ToStringType toStringType=ToStringType.SIMPLE;
+    public ToStringType toStringType=ToStringType.DETAILED;
     protected static final String suffix = "Obrony Terytorialnej";
 
     public StrukturaOrganizacyjna(int numer) {
         setNumer(numer);
-        addToExtent();
     }
 
     public StrukturaOrganizacyjna(Zolnierz dowodca, int numer) {

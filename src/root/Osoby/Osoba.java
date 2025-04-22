@@ -5,7 +5,7 @@ import root.ToStringType;
 
 public class Osoba extends ObjectPlus {
     private String imie, nazwisko;
-    public ToStringType toStringType = ToStringType.SIMPLE;
+    public ToStringType toStringType = ToStringType.DETAILED;
 
     public Osoba(String imie, String nazwisko) {
         try {
@@ -42,6 +42,10 @@ public class Osoba extends ObjectPlus {
     @Override
     public String toString() {
         return imie+" "+nazwisko;
+    }
+
+    public void setToStringType(ToStringType t){
+        this.toStringType=t;
     }
 
     public String getSimpleName(){

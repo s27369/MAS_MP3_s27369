@@ -1,17 +1,45 @@
 package root;
 
+import root.Osoby.Korpus.Zolnierz;
 import root.Pojazd.Pojazd;
 import root.Pojazd.Teren.PojazdLadowy;
 import root.Pojazd.Teren.PojazdPowietrzny;
 import root.Pojazd.TypPojazdu.PojazdBojowy;
 import root.Pojazd.TypPojazdu.PojazdTransportowy;
+import root.StrukturyOrganizacyjne.Batalion;
 
 public class Main {
     public static void main(String[] args) {
-        wieloaspektowe();
+//        wieloaspektowe();
+        dynamic();
     }
+    private static void dynamic(){
+        System.out.println("------------------------------------------DYNAMIC------------------------------------------");
+        Batalion batalion = new Batalion(181, new Adres("Wesoła", 1, "Warszawa"));
+        Zolnierz z1 = new Zolnierz("Jan", "Kowalski", "Szeregowy");
+        Zolnierz z2 = new Zolnierz("Piotr", "Kręgiel", "Kapral");
+        Zolnierz z3 = new Zolnierz("Karol", "Nowak", "Pułkownik");
 
+        z3.setBatalion(batalion);
+        z3.addPowdladny(z2);
+        z2.addPowdladny(z1);
+
+        ObjectPlus.printExtent();
+
+        z1.awansuj();
+        z2.awansuj();
+        z3.degraduj();
+        z3.degraduj();
+
+        z3.setPrzelozony(z1);
+        z2.setBatalion(batalion);
+        z1.setPrzelozony(z2);
+//        z1.addPowdladny(z3);
+
+        ObjectPlus.printExtent();
+    }
     private static void wieloaspektowe(){
+        System.out.println("------------------------------------------WIELOASPEKTOWE------------------------------------------");
         Pojazd ciezarowka = new PojazdTransportowy("CIE123", new PojazdLadowy(50), 100);
         Pojazd czolg = new PojazdBojowy("CZO234", new PojazdLadowy(20), 10);
         Pojazd heliTransportowy = new PojazdTransportowy("HT345", new PojazdPowietrzny(100, 500), 100);
