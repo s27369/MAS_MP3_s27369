@@ -4,13 +4,17 @@ import root.Pojazd.Pojazd;
 import root.Pojazd.Teren.TerenPojazdu;
 
 public class PojazdTransportowy extends Pojazd {
-    private final int maxUdzwig;
+    private int maxUdzwig;
     private int obecnyUdzwig;
 
     public PojazdTransportowy(String rejestracja, TerenPojazdu terenPojazdu, int maxUdzwig) {
         super(rejestracja, terenPojazdu);
-        if(maxUdzwig<1)throw new IllegalArgumentException("udzwig musi być >=1");
-        this.maxUdzwig=maxUdzwig;
+        try{
+            if(maxUdzwig<1)throw new IllegalArgumentException("udzwig musi być >=1");
+            this.maxUdzwig=maxUdzwig;
+        }catch (Exception e){
+            removeFromExtent();
+        }
     }
 
     public void zaladuj(int waga){

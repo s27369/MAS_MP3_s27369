@@ -9,8 +9,13 @@ public abstract class Pojazd extends ObjectPlus {
     private TerenPojazdu terenPojazdu;
 
     public Pojazd(String rejestracja, TerenPojazdu terenPojazdu) {
-        setRejestracja(rejestracja);
-        setTerenPojazdu(terenPojazdu);
+        try {
+            setRejestracja(rejestracja);
+            setTerenPojazdu(terenPojazdu);
+        }catch (Exception e){
+            this.terenPojazdu=null;
+            removeFromExtent();
+        }
     }
 
     public void setRejestracja(String rejestracja) {

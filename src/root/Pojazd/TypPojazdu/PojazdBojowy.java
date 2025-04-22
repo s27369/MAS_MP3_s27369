@@ -9,6 +9,11 @@ public class PojazdBojowy extends Pojazd {
 
     public PojazdBojowy(String rejestracja, TerenPojazdu terenPojazdu, int iloscAmunicji) {
         super(rejestracja, terenPojazdu);
+        try{
+
+        }catch (Exception e){
+            removeFromExtent();
+        }
         setIloscAmunicji(iloscAmunicji);
     }
 
