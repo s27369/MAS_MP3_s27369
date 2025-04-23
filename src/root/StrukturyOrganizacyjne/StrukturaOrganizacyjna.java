@@ -42,22 +42,7 @@ public abstract class StrukturaOrganizacyjna extends ObjectPlus {
         this.numer = numer;
     }
 
-    public void changeToStringType(){
-        if(this.toStringType==ToStringType.SIMPLE)
-            this.toStringType=ToStringType.DETAILED;
-        else
-            this.toStringType=ToStringType.SIMPLE;
-    }
-    public ToStringType changeToStringType(ToStringType type){
-        ToStringType oldType = this.toStringType;
-        this.toStringType=type;
-        return oldType;
-    }
-
-    public ToStringType getToStringType() {
-        return toStringType;
-    }
-
+    @Override
     public String getSimpleName(){
         ToStringType oldType = this.toStringType;
         this.toStringType=ToStringType.SIMPLE;

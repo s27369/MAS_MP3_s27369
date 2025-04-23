@@ -1,5 +1,7 @@
 package root;
 
+import root.Misja.Misja;
+import root.Misja.TypMisji;
 import root.Osoby.Osoba;
 import root.Osoby.Pracownik;
 import root.Osoby.Zolnierz;
@@ -12,15 +14,47 @@ import root.Pojazd.TypPojazdu.PojazdTransportowy;
 import root.StrukturyOrganizacyjne.Batalion;
 
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-//        wieloaspektowe();
-//        dynamic();
-//        klasaAbstrakcyjna();
+        wieloaspektowe();
+        dynamic();
+        klasaAbstrakcyjna();
         wielodziedziczenie();
+        overlapping();
     }
+    public static void overlapping(){
+        System.out.println("------------------------------------------OVERLAPPING------------------------------------------");
+        EnumSet<TypMisji> t1 = EnumSet.of(TypMisji.BOJOWA);
+        Misja m1 = new Misja("Misja Bojowa", t1);
+        m1.setIloscAmunicji(10);
+        m1.wykonajMisje();
+
+        EnumSet<TypMisji> t2 = EnumSet.of(TypMisji.SABOTAZ);
+        Misja m2 = new Misja("Misja Sabotaż", t2);
+        m2.setIloscC4(3);
+        m2.wykonajMisje();
+
+        EnumSet<TypMisji> t3 = EnumSet.of(TypMisji.ROZPOZNANIE);
+        Misja m3 = new Misja("Misja Rozpoznanie", t3);
+        m3.wykonajMisje();
+
+        EnumSet<TypMisji> t4 = EnumSet.of(TypMisji.BOJOWA, TypMisji.SABOTAZ, TypMisji.ROZPOZNANIE);
+        Misja m4 = new Misja("Misja Bojowa, Sabotaż, Rozpoznanie", t4);
+        m4.setIloscAmunicji(10);
+        m4.setIloscC4(3);
+        m4.wykonajMisje();
+
+        ObjectPlus.printExtent();
+        m1.removeFromExtent();
+        m2.removeFromExtent();
+        m3.removeFromExtent();
+        m4.removeFromExtent();
+        ObjectPlus.printExtent();
+    }
+
     private static void klasaAbstrakcyjna(){
         System.out.println("------------------------------------------KLASA ABSTRAKCYJNA------------------------------------------");
         Osoba z1 = new Zolnierz("Jan", "Kowalski", "Szeregowy");

@@ -54,7 +54,7 @@ public class Brygada extends StrukturaOrganizacyjna {
         if(dowodca==null){
             throw new IllegalArgumentException("dowodca nie moze byc null");
         }
-        System.out.println(dowodca+" obejmuje dowództwo w strukturze organizacyjnej: "+ this);
+        System.out.println(dowodca.getSimpleName()+" obejmuje dowództwo w strukturze organizacyjnej: "+ this.getSimpleName());
         this.dowodca = dowodca;
     }
 

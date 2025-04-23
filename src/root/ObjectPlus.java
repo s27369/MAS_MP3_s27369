@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.*;
 
 public class ObjectPlus implements Serializable {
+    public ToStringType toStringType = ToStringType.DETAILED;
     private static Map<Class, List> extent = new HashMap<>();
 
     public ObjectPlus(){addToExtent();}
@@ -50,5 +51,13 @@ public class ObjectPlus implements Serializable {
             }
         }
         System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+    }
+
+    public String getSimpleName(){
+        ToStringType oldType = this.toStringType;
+        this.toStringType=ToStringType.SIMPLE;
+        String msg = this.toString();
+        this.toStringType = oldType;
+        return msg;
     }
 }
